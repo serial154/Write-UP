@@ -1,0 +1,17 @@
+services:
+  lab:
+    build:
+      context: .
+    container_name: from_loot_to_root
+    image: from-loot-to-root-1-lab:latest
+    hostname: from_loot_to_root
+    env_file:
+      - src/backup.env
+    environment:
+      WINGFTPD: /opt/wingftpd
+      WINGFTP_BOOTSTRAP_DIR: /root/wingftpd-bootstrap
+      WINGFTP_ANON_DIR: /opt/wingftpd/ftp/anonymous
+      TERM: xterm-256color
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
